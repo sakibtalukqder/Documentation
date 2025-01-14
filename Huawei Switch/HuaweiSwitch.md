@@ -1,9 +1,9 @@
 
-# **Huawei Switch Command Documentation**
+# Huawei Switch Command Documentation
 
 ---
 
-#### **1. Reset Switch**
+### 1. Reset Switch
 
 To reset the switch and erase the saved configuration:
 
@@ -15,7 +15,7 @@ The configuration will be erased to reconfigure. Continue? [Y/N]: y
 
 ---
 
-#### **2. Show IP Brief**
+### 2. Show IP Brief
 
 To display the summary of all the switch's IP interfaces:
 
@@ -25,7 +25,7 @@ display ip interface brief
 
 ---
 
-#### **3. Assign IP on Default VLAN**
+### 3. Assign IP on Default VLAN
 
 To assign an IP address to the default VLAN (Vlanif1):
 
@@ -36,7 +36,7 @@ ip address 192.168.12.31 255.255.255.0
 
 ---
 
-#### **4. Up/No Shutdown VLAN**
+### 4. Up/No Shutdown VLAN
 
 To configure an interface to access mode, assign it to VLAN 1, and bring the port up:
 
@@ -50,7 +50,7 @@ To configure an interface to access mode, assign it to VLAN 1, and bring the por
 
 ---
 
-#### **5. Create Local User**
+### 5. Create Local User
 
 To create a local user with a password and assign privilege level 3 (Admin privileges):
 
@@ -63,7 +63,7 @@ To create a local user with a password and assign privilege level 3 (Admin privi
 
 ---
 
-#### **6. Create SSH User**
+### 6. Create SSH User
 
 To create an SSH-enabled user account:
 
@@ -78,7 +78,7 @@ Info: After changing the rights (including the password, access type, FTP direct
 
 ---
 
-#### **7. Show User and Service**
+### 7. Show User and Service
 
 To display information about the user and the associated service type:
 
@@ -88,30 +88,30 @@ To display information about the user and the associated service type:
 
 ---
 
-#### **8. Enable/Disable POE (Power over Ethernet)**
+### 8. Enable/Disable POE (Power over Ethernet)
 
 To enable or disable POE on a specific interface (e.g., GE1/0/3):
 
-**Enable POE:**
+### Enable POE:
 ```shell
 [Huawei-SL3] interface ge1/0/3
 [Huawei-SL3-GE1/0/3] poe enable
 ```
 
-**Disable POE:**
+### Disable POE:
 ```shell
 [Huawei-SL3-GE1/0/3] undo poe enable
 Warning: This operation will power off the PD connected to this port. Continue? [Y/N]: y
 ```
 
 ---
-**Add Description to a switch port:**
+### Add Description to a switch port:
 ```shell
 [Huawei-SL3]interface range GE 1/0/1 to GE 1/0/8
 [Huawei-SL3-port-group]description Poe Turned On
 ```
 ---
-**show Description:**
+### show Description:
 ```shell
 [Huawei-SL3-port-group]display interface description
 PHY: Physical
@@ -161,5 +161,54 @@ Vlanif1                       up      up
 [Huawei-SL3-port-group]
 ```
 ---
+### Backup Configuration
+```plaintext
+<Huawei-SL3>save backup.cfg
+Warning: Are you sure to save the configuration to flash:/backup.cfg? [Y/N]:y
+Warning: flash:/backup.cfg exists, overwrite? [Y/N]:y
+Now saving the current configuration to the slot 1
+Info: Save the configuration successfully.
+```
+
+### Enable FTP Server and Login from Windows
+```plaintext
+C:\Documents and Setting\Administrator> ftp 10.110.24.254
+Connected to 10.110.24.254.
+220 FTP service ready.
+User (10.110.24.254:(none)): huawei
+331 Password required for huawei.
+Password:
+230 User logged in.
+
+ftp> binary
+200 Type set to I.
+ftp> lcd c:\temp
+Local directory now C:\temp.
+
+ftp> get flash:/config.cfg backup.cfg
+```
+
+### Restore Configuration
+```plaintext
+<HUAWEI>startup saved-configuration config.cfg
+<HUAWEI>display startup
+MainBoard:
+  Configured startup system software:        cfcard:/device_software.cc
+  Startup system software:                   cfcard:/device_software.cc
+  Next startup system software:              cfcard:/device_software.cc
+  Startup saved-configuration file:          cfcard:/config_old.cfg   //Current configuration file name.
+  Next startup saved-configuration file:     cfcard:/config.cfg       //Name of the configuration file for the next startup.
+  Startup paf file:                          default
+  Next startup paf file:                     default
+  Startup license file:                      default
+  Next startup license file:                 default
+  Startup patch package:                     NULL
+  Next startup patch package:                NULL
+```
+
+### Restart the Device
+```plaintext
+<HUAWEI>reboot  //Restart the device.
+```
 
 This concludes the key commands for managing Huawei switches.
