@@ -2,7 +2,7 @@
 
 ---
 
-### 1. install MAAS
+## 1. install MAAS
 
 install Maas using --"Snap" :
 ```shell
@@ -12,7 +12,7 @@ sudo snap install --channel=3.5 maas
 
 ---
 
-### 2. Install and configure Postgres Database Server
+## 2. Install and configure Postgres Database Server
 
 install Postgres Database :
 ```shell
@@ -74,6 +74,19 @@ add below lines at the end of the configuration in the existing configuration of
 ```shell
 host    maasdb    maas    0/0     md5
 ```
-![ScreenShot](ss-01.png)
+![ScreenShot](SS-01.png)
+
+Use "ctl+O" to save file, and "ctl+X" for exit
+
+---
+
+## 3. Initialize maas 
+
+using the command 
+```shell
+sudo maas init region+rack --database-uri "postgres://maas:qwerty@localhost/maasDB"
+```
+--database-uri "postgres://<username>:<password>@localhost/<DatabaseName>"
+![ScreenShot](SS-02.png)
 
 ---
