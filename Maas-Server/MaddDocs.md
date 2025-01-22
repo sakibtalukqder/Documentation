@@ -89,8 +89,8 @@ sudo maas init region+rack --database-uri "postgres://maas:qwerty@localhost/maas
 ```shell
 --database-uri "postgres://<username>:<password>@localhost/<DatabaseName>"
 ```
-
 </br>
+
 ![ScreenShot](SS-02.png)
 
 ---
