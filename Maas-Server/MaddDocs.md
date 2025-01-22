@@ -86,7 +86,10 @@ using the command
 ```shell
 sudo maas init region+rack --database-uri "postgres://maas:qwerty@localhost/maasDB"
 ```
+```shell
 --database-uri "postgres://<username>:<password>@localhost/<DatabaseName>"
+```
+
 </br>
 ![ScreenShot](SS-02.png)
 
