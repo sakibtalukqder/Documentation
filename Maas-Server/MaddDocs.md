@@ -74,7 +74,7 @@ add below lines at the end of the configuration in the existing configuration of
 ```shell
 host    maasdb    maas    0/0     md5
 ```
-![ScreenShot](SS-01.png)
+![ScreenShot](SS-001.png)
 
 Use "ctl+O" to save file, and "ctl+X" for exit
 
