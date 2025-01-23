@@ -60,14 +60,14 @@ postgres=# \l
 postgres=#
 ```
 
- maasDB    | maas     | UTF8     | libc            | C.UTF-8 | C.UTF-8 |            |           |
+ maasDB    | maas     | UTF8     | libc            | C.UTF-8 | C.UTF-8 |  
  </br>---is our database
 
 
 now, edit the configuration of the databse
 
 ```shell
-sudo nano /etc/postgresql/14/main/pg_hba.conf
+sudo nano /etc/postgresql/16/main/pg_hba.conf
 ```
 
 add below lines at the end of the configuration in the existing configuration of the above file
@@ -93,4 +93,47 @@ sudo maas init region+rack --database-uri "postgres://maas:qwerty@localhost/maas
 
 ![ScreenShot](SS-02.png)
 
+```shell
+http://<server ip>:5240/MAAS
+```  
+---is our default url
+
+![ScreenShot](SS-03.png)
+
+</br>
+so, we need to create admin to login to the web interface
+Using Command:
+
+```shell
+sudo maas createadmin
+```  
+![ScreenShot](SS-04.png)
+
 ---
+
+## 4. SSH Setup for user
+
+generate ssh key with the following command: 
+
+```shell
+sudo ssh-keygen -t rsa -b 2048 -C "ssh-for-sakib"
+```
+
+-t --for type of the key
+-b --for bit size
+-C --for comment
+
+```shell
+sakib@maas:~$ sudo ssh-keygen -t rsa -b 2048 -C "ssh-for-sakib"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): rsa-maas 
+```
+rsa-mass is the file name of the ssh key
+now copy the public key and upload to the server
+
+![ScreenShot](SS-05.png)
+
+click on import ssh and finish to done the setup
+
+---
+
