@@ -33,6 +33,11 @@ To assign an IP address to the default VLAN (Vlanif1):
 interface Vlanif1
 ip address 192.168.12.31 255.255.255.0
 ```
+assign ip form dhcp
+```shell
+interface Vlanif1
+ip address 192.168.12.31 255.255.255.0
+```
 
 ---
 
