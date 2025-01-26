@@ -68,15 +68,23 @@ To create a local user with a password and assign privilege level 3 (Admin privi
 
 ---
 
-### 6. Create SSH User
+### 6. Specify service for local user
 
-To create an SSH-enabled user account:
+SSH-enabled user account:
 
 ```shell
 [Huawei-SL3-aaa] local-user adminssh password irreversible-cipher Admin@24
 [Huawei-SL3-aaa] local-user adminssh privilege level 3
 Warning: This operation may affect online users and will change the user privilege level, Continue? [Y/N]: y
 [Huawei-SL3-aaa] local-user adminssh service-type ssh
+Info: After changing the rights (including the password, access type, FTP directory, and HTTP directory) 
+[Huawei-SL3-aaa]
+```
+
+Specify multiple service for user
+
+```shell
+[Huawei-SL3-aaa] local-user adminssh service-type  service-type ssh http telnet ftp  
 Info: After changing the rights (including the password, access type, FTP directory, and HTTP directory) 
 [Huawei-SL3-aaa]
 ```
@@ -167,7 +175,7 @@ Vlanif1                       up      up
 ```
 ---
 ### Backup Configuration
-```plaintext
+```shell
 <Huawei-SL3>save backup.cfg
 Warning: Are you sure to save the configuration to flash:/backup.cfg? [Y/N]:y
 Warning: flash:/backup.cfg exists, overwrite? [Y/N]:y
@@ -176,7 +184,7 @@ Info: Save the configuration successfully.
 ```
 
 ### Enable FTP Server and Login from Windows
-```plaintext
+```shell
 C:\Documents and Setting\Administrator> ftp 10.110.24.254
 Connected to 10.110.24.254.
 220 FTP service ready.
@@ -194,7 +202,7 @@ ftp> get flash:/config.cfg backup.cfg
 ```
 
 ### Restore Configuration
-```plaintext
+```shell
 <HUAWEI>startup saved-configuration config.cfg
 <HUAWEI>display startup
 MainBoard:
@@ -212,7 +220,7 @@ MainBoard:
 ```
 
 ### Restart the Device
-```plaintext
+```shell
 <HUAWEI>reboot  //Restart the device.
 ```
 
