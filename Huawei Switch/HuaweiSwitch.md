@@ -66,6 +66,20 @@ To create a local user with a password and assign privilege level 3 (Admin privi
 [Huawei-SL3-aaa] local-user iamreadoy service-type ?
 ```
 
+### Show All User
+
+```shell
+[Huawei-SL3-aaa] display local-user
+```
+
+
+### Delete a User
+
+```shell
+[Huawei-SL3-aaa] undo local-user iamreadoy
+```
+
+
 ---
 
 ### 6. Specify service for local user
