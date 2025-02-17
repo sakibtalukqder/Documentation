@@ -36,7 +36,7 @@ ip address 192.168.12.31 255.255.255.0
 assign ip form dhcp
 ```shell
 interface Vlanif1
-ip address 192.168.12.31 255.255.255.0
+ip address dhcp-alloc 
 ```
 
 ---
@@ -173,6 +173,26 @@ NULL0                         up      up(s)
 Vlanif1                       up      up
 [Huawei-SL3-port-group]
 ```
+
+
+---
+### Display Log
+```shell
+<HUAWEI>terminal monitor
+Info: Current terminal monitor is on.
+
+<HUAWEI>display logbuffer
+Logging buffer configuration and contents : enabled
+Allowed max buffer size : 10240
+Actual buffer size : 512
+Channel number : 4 , Channel name : logbuffer
+Dropped messages : 0
+Overwritten messages : 0
+Current messages : 65
+
+```
+
+
 ---
 ### Backup Configuration
 ```shell
