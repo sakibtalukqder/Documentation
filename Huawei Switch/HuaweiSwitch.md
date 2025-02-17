@@ -194,6 +194,23 @@ Current messages : 65
 
 
 ---
+### Filter Log
+```shell
+<HUAWEI>display logbuffer module ?
+  aaa            Feature name of log
+  am             Feature name of log
+  arp            Feature name of log
+  bfd            Feature name of log
+  bgp            Feature name of log
+  ......
+
+<HUAWEI>display logbuffer module debug
+Logging buffer configuration and contents : enabled
+
+```
+
+
+---
 ### Backup Configuration
 ```shell
 <Huawei-SL3>save backup.cfg
