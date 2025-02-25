@@ -238,7 +238,17 @@ Logging buffer configuration and contents : enabled
       v1   Enable the device to support SNMPv1
       v2c  Enable the device to support SNMPv2c
       v3   Enable the device to support SNMPv3
-
+ ```
+ ```shell
+    ** Install WEAKEA if rerquired 
+    <3rd-Floor-R01-S02>install feature-software WEAKEA
+    Info: Checking, please wait for a moment...done.
+    Info: Start to install the package WEAKEA.
+    Info: Operating, please wait for a moment..This operation will install weak algorithm software, and weak algorithms will be allowed to be used.
+    .........done.
+    Info: Succeeded in installing the software.
+ ```
+ ```shell
     [HUAWEI]snmp-agent sys-info version v2c
     Warning: SNMPv1/SNMPv2c is not secure, and SNMPv3 in either authentication or privacy mode is recommended.
     [HUAWEI]display snmp-agent sys-info
