@@ -3,7 +3,7 @@
 
 ---
 
-### 1. Reset Switch
+### Reset Switch
 
 To reset the switch and erase the saved configuration:
 
@@ -15,7 +15,7 @@ The configuration will be erased to reconfigure. Continue? [Y/N]: y
 
 ---
 
-### 2. Show IP Brief
+### Show IP Brief
 
 To display the summary of all the switch's IP interfaces:
 
@@ -25,7 +25,7 @@ display ip interface brief
 
 ---
 
-### 3. Assign IP on Default VLAN
+### Assign IP on Default VLAN
 
 To assign an IP address to the default VLAN (Vlanif1):
 
@@ -41,7 +41,7 @@ ip address dhcp-alloc
 
 ---
 
-### 4. Up/No Shutdown VLAN
+### Up/No Shutdown VLAN
 
 To configure an interface to access mode, assign it to VLAN 1, and bring the port up:
 
@@ -55,7 +55,7 @@ To configure an interface to access mode, assign it to VLAN 1, and bring the por
 
 ---
 
-### 5. Create Local User
+### Create Local User
 
 To create a local user with a password and assign privilege level 3 (Admin privileges):
 
@@ -82,7 +82,7 @@ To create a local user with a password and assign privilege level 3 (Admin privi
 
 ---
 
-### 6. Specify service for local user
+### Specify service for local user
 
 SSH-enabled user account:
 
@@ -105,7 +105,7 @@ Info: After changing the rights (including the password, access type, FTP direct
 
 ---
 
-### 7. Show User and Service
+### Show User and Service
 
 To display information about the user and the associated service type:
 
@@ -115,7 +115,7 @@ To display information about the user and the associated service type:
 
 ---
 
-### 8. Enable/Disable POE (Power over Ethernet)
+### Enable/Disable POE (Power over Ethernet)
 
 To enable or disable POE on a specific interface (e.g., GE1/0/3):
 
@@ -206,7 +206,6 @@ Current messages : 65
 
 ```
 
-
 ---
 ### Filter Log
 ```shell
@@ -222,9 +221,50 @@ Current messages : 65
 Logging buffer configuration and contents : enabled
 
 ```
-
-
 ---
+
+### SnmpWalk
+
+ ##### Enable snmp
+ ```shell
+    [HUAWEI]snmp-agent
+    Info: It will create the SNMP listening socket after the source interface or source address is configured.
+ ```
+ 
+ ##### Enable Snmp Version v2c
+ ```shell
+    [HUAWEI]snmp-agent sys-info version ?
+      all  Enable the device to support SNMPv1, SNMPv2c and SNMPv3
+      v1   Enable the device to support SNMPv1
+      v2c  Enable the device to support SNMPv2c
+      v3   Enable the device to support SNMPv3
+
+    [HUAWEI]snmp-agent sys-info version v2c
+    Warning: SNMPv1/SNMPv2c is not secure, and SNMPv3 in either authentication or privacy mode is recommended.
+    [HUAWEI]display snmp-agent sys-info
+ ```
+
+ ##### Create a community string
+ ```shell
+    [HUAWEI]snmp-agent community complexity-check disable
+    Warning: Does not recommend to disable complexity check. A simple community name may result in security threats.
+
+    [HUAWEI]snmp-agent community read ?
+      STRING<1-32>  String of community name
+      cipher        Specify community name with encrypted text
+
+    [HUAWEI]snmp-agent community read public
+ ```
+
+ ##### Allow Interface for Snmp
+ ```shell
+    [HUAWEI]snmp-agent protocol source-interface Vlanif 1
+        ----- Or Use All Interface instade of single interface -----
+    [HUAWEI]snmp-agent protocol source all-interface
+ ```
+---
+
+
 ### Backup Configuration
 ```shell
 <Huawei-SL3>save backup.cfg
@@ -272,7 +312,7 @@ MainBoard:
 
 ### Restart the Device
 ```shell
-<HUAWEI>reboot  //Restart the device.
+<HUAWEI>reboot
 ```
 
 This concludes the key commands for managing Huawei switches.
