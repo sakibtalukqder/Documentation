@@ -103,6 +103,11 @@ Info: After changing the rights (including the password, access type, FTP direct
 [Huawei-SL3-aaa]
 ```
 
+Specify Ftp Directory for ftp user (if needed)
+```shell
+[Huawei-SL3-aaa] local-user ftpuser ftp-directory flash:/
+```
+
 ---
 
 ### Show User and Service
@@ -286,20 +291,33 @@ Info: Save the configuration successfully.
 ```
 
 ### Enable FTP Server and Login from Windows
+
+Specify Ftp Directory for ftp user (if needed)
 ```shell
-C:\Documents and Setting\Administrator> ftp 10.110.24.254
+[Huawei-SL3-aaa] local-user ftpuser ftp-directory flash:/
+```
+
+login to ftp
+
+```shell
+C:\Documents and Setting\Administrator> ftp <switch ip>
 Connected to 10.110.24.254.
 220 FTP service ready.
-User (10.110.24.254:(none)): huawei
+User (10.110.24.254:(none)): username
 331 Password required for huawei.
 Password:
 230 User logged in.
-
+```
+Set local Directory
+```shell
 ftp> binary
 200 Type set to I.
 ftp> lcd c:\temp
 Local directory now C:\temp.
+```
 
+Download a file form switch thrugh ftp
+```shell
 ftp> get flash:/config.cfg backup.cfg
 ```
 
@@ -319,6 +337,14 @@ MainBoard:
   Next startup license file:                 default
   Startup patch package:                     NULL
   Next startup patch package:                NULL
+```
+
+### Firmware Update
+
+Upload the firmware (both .cc and .PAT file) to the switch directory first and then execute this command
+```shell
+<HUAWEI>startup system-software ?
+<HUAWEI>startup system-software flash:/<filename.cc>
 ```
 
 ### Restart the Device
