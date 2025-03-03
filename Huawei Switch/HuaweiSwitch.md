@@ -295,6 +295,10 @@ Info: Save the configuration successfully.
 Specify Ftp Directory for ftp user (if needed)
 ```shell
 [Huawei-SL3-aaa] local-user ftpuser ftp-directory flash:/
+[R02-S02-5th-Floor]ftp server source -i Vlanif 1
+Warning: FTP server source configuration will take effect in the next login. Continue? [Y/N]:y
+Info: Succeeded in setting the source ip address of the FTP server to the ip address of Vlanif1.
+
 ```
 
 login to ftp
@@ -345,6 +349,22 @@ Upload the firmware (both .cc and .PAT file) to the switch directory first and t
 ```shell
 <HUAWEI>startup system-software ?
 <HUAWEI>startup system-software flash:/<filename.cc>
+```
+Varify Update
+```shell
+<HUAWEI>display startup
+MainBoard:
+  Configured startup system software:        flash:/S310_V600R023C10SPC600.cc
+  Startup system software:                   flash:/S310_V600R023C10SPC600.cc
+  Next startup system software:              flash:/S310_V600R023C10SPC600.cc
+  Startup saved-configuration file:          flash:/save.zip
+  Next startup saved-configuration file:     flash:/save.zip
+  Startup paf file:                          default
+  Next startup paf file:                     default
+  Startup patch package:                     NULL
+  Next startup patch package:                NULL
+  Startup feature software:                  NULL
+  Next startup feature software:             NULL
 ```
 
 ### Restart the Device
