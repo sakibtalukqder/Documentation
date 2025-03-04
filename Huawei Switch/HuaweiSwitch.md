@@ -212,6 +212,18 @@ Current messages : 65
 ```
 
 ---
+### Sent Log to remote serrver
+```shell
+  info-center enable
+  info-center source default channel 2
+  info-center loghost 192.168.3.115
+  ......
+
+<HUAWEI>display logbuffer module debug
+Logging buffer configuration and contents : enabled
+
+```
+---
 ### Filter Log
 ```shell
 <HUAWEI>display logbuffer module ?
