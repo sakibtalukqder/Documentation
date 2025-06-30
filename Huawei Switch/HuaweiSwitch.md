@@ -367,6 +367,19 @@ MainBoard:
   Next startup feature software:             NULL
 ```
 
+## Chenge Console Password
+
+```shell
+Add commentMore actions
+   <HUAWEI>system-view
+   [HUAWEI]user-interface console 0
+   [HUAWEI-ui-console0]set authentication password cipher NetAdminOpl@2025
+   [HUAWEI-ui-console0]authentication-mode password
+   Warning: The "password" authentication mode is not secure, and it is strongly recommended to use "aaa" authentication mode.
+   [HUAWEI-ui-console0]quit
+
+```
+
 ### Restart the Device
 ```shell
 <HUAWEI>reboot
